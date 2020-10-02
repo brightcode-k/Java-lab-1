@@ -14,7 +14,7 @@ public class Filereader {
         URL fileURL = this.getClass().getClassLoader().getResource(fileName);
         Stream<String> fileLines = null;
         if (fileURL == null) {
-            throw new FileNotFoundException("Missing file \"" + fileName + "\"");
+            throw new FileNotFoundException("There is no file with name: \"" + fileName + "\"");
         }
         try {
             fileLines = Files.lines(Paths.get(fileURL.toURI()));
