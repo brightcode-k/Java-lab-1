@@ -7,29 +7,29 @@ public class Parser {
    private static final char Default_delimeter = ',';
 
     public static String LineParser(String cvsText, String separator2) {
-        int number_symb = 0;
+        int iterator = 0;
         boolean first_boolean = false;
         boolean second_boolean = false;
         StringBuilder complete_line = new StringBuilder();
         while (!cvsText.isEmpty()) {
             if (cvsText.startsWith(String.valueOf(Default_delimeter)) && !first_boolean && !second_boolean) {
-                complete_line.append(number_symb).append(separator2);
-                number_symb = 0;
+                complete_line.append(iterator).append(separator2);
+                iterator = 0;
             }
-            else if (cvsText.startsWith("\"") && number_symb == 0) {
+            else if (cvsText.startsWith("\"") && iterator == 0) {
                 int delimeter_comma = cvsText.indexOf("\"", 1);
                 if (delimeter_comma != -1) {
                     first_boolean = true;
                 }
                 else {
-                    number_symb++;
+                    iterator++;
                 }
             }
-            else if (cvsText.startsWith("\"") && number_symb != 0) {
+            else if (cvsText.startsWith("\"") && iterator != 0) {
                 if (first_boolean) {
                     first_boolean = false;
                 } else {
-                    number_symb++;
+                    iterator++;
                 }
             }
             else if (cvsText.indexOf('/') == 0 && cvsText.indexOf('*') == 1) {
@@ -40,12 +40,12 @@ public class Parser {
                 cvsText = cvsText.substring(1);
             }
             else if (!second_boolean) {
-                number_symb++;
+                iterator++;
             }
         cvsText = cvsText.substring(1);
     }
-        if(number_symb !=0) {
-            complete_line.append(number_symb);
+        if(iterator !=0) {
+            complete_line.append(iterator);
         }
         return complete_line.toString();
     }
