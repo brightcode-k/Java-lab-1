@@ -23,7 +23,7 @@ public class Main {
         File file = new File("result.txt");
         String absolutePath = file.getAbsolutePath();
         Files.write(Paths.get(absolutePath), parsedLines);
-        System.out.println("Path to the file:");
+        System.out.println("Path to the file: ");
         System.out.println(absolutePath);
     }
     public static String Separator() {
