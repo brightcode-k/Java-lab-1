@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class Filereader {
-
     public Stream<String> read(String fileName) throws FileNotFoundException {
         URL fileURL = this.getClass().getClassLoader().getResource(fileName);
         Stream<String> fileLines = null;
