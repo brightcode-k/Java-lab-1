@@ -6,14 +6,14 @@ public class Parser {
 
    private static final char Default_delimeter = ',';
 
-    public static String LineParser(String cvsText, String separator2) {
+    public static String LineParser(String cvsText, String separator) {
         int iterator = 0;
         boolean first_boolean = false;
         boolean second_boolean = false;
         StringBuilder complete_line = new StringBuilder();
         while (!cvsText.isEmpty()) {
             if (cvsText.startsWith(String.valueOf(Default_delimeter)) && !first_boolean && !second_boolean) {
-                complete_line.append(iterator).append(separator2);
+                complete_line.append(iterator).append(separator);
                 iterator = 0;
             }
             else if (cvsText.startsWith("\"") && iterator == 0) {
